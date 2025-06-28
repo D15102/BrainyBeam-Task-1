@@ -85,6 +85,7 @@ export const loginAuth = async (req, res) => {
         }
         const token = jwt.sign({ email: existingUser.email }, process.env.JWT_SECRET)
         res.cookie("token", token, {
+            httpOnly : true,
             secure: true,
             sameSite: "None", // Very important!
         })
